@@ -9,21 +9,33 @@ const bio = {
         "location": "Denver, CO"
     },
     "bioPic": "images/me.jpg",
-    "welcomeMessage": "Hire me!",
-    "skills": ["HTML", "CSS", "JavaScript", "JQuery"],
+    "welcomeMessage": "Hi, I'm a frontend web developer that's passionate about learning and growing as a professional. ",
+    "skills": ["HTML", "CSS", "JavaScript", "JQuery", "Git", "WordPress"],
     display: () => {
         const formattedName = HTMLheaderName.replace('%data%', bio.name);
         $('#header').prepend(formattedName);
 
-        if (bio.skills.length > 0) {
-            $('#header').append(HTMLskillsStart);
-            // let formattedSkills = HTMLskills.replace("%data%", bio.skills[0]);
-            //  $('#skills').append(formattedSkills);
+        $('#header').append(HTMLskillsStart);
             for (let skill of bio.skills) {
-                $("#skills").append(HTMLskills.replace("%data%", skill));
+                 const formattedSkills = HTMLskills.replace("%data%", skill);
+                 $("#skills").append(formattedSkills);
             }
 
-        }
+        const formattedBioPic = HTMLbioPic.replace("%data%", bio.bioPic);
+        $("#header").append(formattedBioPic);
+        const formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+        $("#header").append(formattedWelcomeMsg);
+
+        const formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+        $("#topContacts").append(formattedRole);
+        const formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+        $("#topContacts").append(formattedEmail);
+        const formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+        $("#topContacts").append(formattedMobile);
+        const formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+        $("#topContacts").append(formattedGithub);
+        const formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+        $("#topContacts").append(formattedLocation);
     }
 }
 
@@ -125,14 +137,26 @@ const education = {
         }
     ],
     display: () => {
+        $("#education").append(HTMLschoolStart);
+        for (school in education.schools) {
+            const formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
+            const formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+            const formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+            const formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
 
+            $(".education-entry:last").append(formattedSchoolName);
+            $(".education-entry:last").append(formattedSchoolDegree);
+            $(".education-entry:last").append(formattedSchoolLocation);
+            $(".education-entry:last").append(formattedSchoolMajor);
+
+        }
     }
 };
 
 bio.display();
 work.display();
 projects.display();
-//education.display();
+education.display();
 
 
 $('#mapDiv').append(googleMap);
