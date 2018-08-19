@@ -16,10 +16,10 @@ const bio = {
         $('#header').prepend(formattedName);
 
         $('#header').append(HTMLskillsStart);
-            for (let skill of bio.skills) {
-                 const formattedSkills = HTMLskills.replace("%data%", skill);
-                 $("#skills").append(formattedSkills);
-            }
+        for (let skill of bio.skills) {
+            const formattedSkills = HTMLskills.replace("%data%", skill);
+            $("#skills").append(formattedSkills);
+        }
 
         const formattedBioPic = HTMLbioPic.replace("%data%", bio.bioPic);
         $("#header").append(formattedBioPic);
@@ -45,21 +45,21 @@ const work = {
             "employer": "Shea Properties",
             "dates": "September 2015 - present",
             "location": "Denver, CO",
-            "description": "job"
+            "description": "I supervise and schedule the daily tasks for maintenance operations in the Highlands Ranch area. I help with proposals for enhancements to the landscape and monitor contract work being done in the field. I also contribute to our safety program by monitoring safety reports done by each employee."
         },
         {
             "title": "Landscape Supervisor",
             "employer": "North American Lawn and Landscape",
             "dates": "August 2013 - August 2015",
             "location": "Charlotte, NC",
-            "description": "job"
+            "description": "Supervise a 15-man crew for a full service commercial landscaping company. The daily tasks involve scheduling, irrigation maintenance, and chemical applications."
         },
         {
             "title": "Assistant Golf Course Superintendent",
             "employer": "River Hills Country Club",
             "dates": "August 2011 - August 2015",
             "location": "Lake Wylie, SC",
-            "description": "job"
+            "description": "Assisted the golf course superintendent in all aspects of golf course maintenance."
         }
     ],
     display: () => {
@@ -82,22 +82,22 @@ const work = {
 
 const projects = {
     "projects": [{
-            "title": "project 1",
-            "dates": "1",
-            "images": "",
-            "description": "job"
+            "title": "Friend Finder",
+            "dates": 2018,
+            "images": "images/friend-finder.PNG",
+            "description": "A compatibility-based 'FriendFinder' application. This full-stack site will take in results from users' surveys, then compare their answers with those from other users. The app will then display the name and picture of the user with the best overall match."
         },
         {
-            "title": "project 2",
-            "dates": "1",
-            "images": "",
-            "description": "job"
+            "title": "Cystal Collector",
+            "dates": "2018",
+            "images": "images/crystal.png",
+            "description": "This game is an example of how to dynamically update the HTML using jQuery."
         },
         {
-            "title": "project 3",
-            "dates": "1",
+            "title": "Eat the Burger",
+            "dates": "2018",
             "images": "",
-            "description": "job"
+            "description": "This web app allows users to input the name of the burger they want to eat, then click to devour it.  The state of each burger is stored in a MySQL database."
         }
     ],
     display: () => {
@@ -106,16 +106,11 @@ const projects = {
             const formattedProjectTitle = HTMLprojectTitle.replace('%data%', projects.projects[project].title);
             const formattedProjectDates = HTMLprojectDates.replace('%data%', projects.projects[project].dates);
             const formattedProjectDescription = HTMLprojectDescription.replace('%data%', projects.projects[project].description);
+            const formattedProjectImage = HTMLprojectImage.replace("%data", projects.projects[project].images);
             $('.project-entry:last').append(formattedProjectTitle);
             $('.project-entry:last').append(formattedProjectDates);
             $('.project-entry:last').append(formattedProjectDescription);
-
-            if (projects.projects[project].images.length > 0) {
-                for (image in projects.projects[project].images) {
-                    const formattedProjectImages = HTMLprojectImage.replace('%data%', projects.projects[project].images);
-                    $('.project-entry:last').append(formattedProjectImages);
-                }
-            }
+            $('.project-entry:last').append(formattedProjectImage);
         }
     }
 };
@@ -126,14 +121,12 @@ const education = {
             "degree": "BA",
             "location": "Raleigh, NC",
             "majors": ["Turfgrass Science"],
-            "url": "url"
         },
         {
             "name": "University of Denver",
             "degree": "Certificate",
             "location": "Denver, CO",
             "majors": ["6 month coding bootcamp"],
-            "url": "url"
         }
     ],
     display: () => {
